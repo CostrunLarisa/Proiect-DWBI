@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         const responseHeaders: HttpHeaders = response.headers;
         console.log(response.headers);
         setTimeout(() => {
-          this.router.navigate(['/groupList', {headers: responseHeaders}]);
+          this.router.navigate(['/shop', {headers: responseHeaders}]);
           console.log('Login successful', response);
         }, 3000);
       },
