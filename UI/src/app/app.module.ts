@@ -8,13 +8,19 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { SignupComponent } from './signup/signup.component';
+import { ShopComponent } from './shop/shop.component';
+import { OrderComponent } from './order/order.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    SignupComponent
+    SignupComponent,
+    ShopComponent,
+    OrderComponent,
+    ProductComponent
   ],
     imports: [
         BrowserModule,
