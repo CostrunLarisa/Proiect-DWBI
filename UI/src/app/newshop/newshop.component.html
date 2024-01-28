@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+
+<div class="newshop-container">
+
+  <form class="newshop-form" (ngSubmit)="addShop()">
+    <h1> Add a new shop</h1>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <br>
+      <input type="text" name="name" class="form-control" [(ngModel)]="shop.name" required>
+    </div>
+
+    <pre></pre>
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+
+  </form>
+</div>

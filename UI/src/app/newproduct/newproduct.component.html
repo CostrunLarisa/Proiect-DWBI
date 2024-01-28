@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="newproduct-container">
+
+  <form class="newproduct-form" (ngSubmit)="submit()">
+    <h1> Add a new product</h1>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <br>
+      <input type="text" name="name" class="form-control" [(ngModel)]="product.name" required>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <br>
+      <input type="float" name="price" class="form-control" [(ngModel)]="product.price" required>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="discount">Discount</label>
+      <br>
+      <input type="float" name="discount" class="form-control" [(ngModel)]="product.discount">
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <br>
+      <textarea name="description" class="form-control" [(ngModel)]="product.description" required></textarea>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="inStock">In Stock</label>
+      <input type="checkbox" name="inStock" class="form-control" [(ngModel)]="product.inStock" required>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="shopId">Shop Id</label>
+      <br>
+      <input required type="number" name="shopId" class="form-control" [(ngModel)]="product.shopId" required>
+      <!--          <select [(ngModel)]="product.shopId">-->
+      <!--            <option  *ngFor="let shop of shops" [value]="shop.shopId">-->
+      <!--              {{ shop.name }}-->
+      <!--            </option>-->
+      <!--          </select>-->
+    </div>
+
+    <pre></pre>
+
+    <pre></pre>
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+
+  </form>
+</div>
