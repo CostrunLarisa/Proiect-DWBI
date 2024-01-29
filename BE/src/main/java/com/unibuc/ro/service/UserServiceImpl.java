@@ -1,10 +1,14 @@
 package com.unibuc.ro.service;
 
 import com.unibuc.ro.exception.InvalidUsernameException;
+import com.unibuc.ro.exception.TokenValidationException;
 import com.unibuc.ro.model.UserDetailsDTO;
 import com.unibuc.ro.repository.UserRepository;
+
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +20,6 @@ import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.Optional;
 
-import io.jsonwebtoken.security.Keys;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -78,5 +81,17 @@ public class UserServiceImpl implements UserService {
                 .signWith(KEY)
                 .compact();
     }
-
+    @Override
+    public String decryptToken(String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(KEY)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claims.getSubject();
+        } catch (Exception e) {
+            throw new TokenValidationException("Authentication token is invalid.");
+        }
+    }
 }
