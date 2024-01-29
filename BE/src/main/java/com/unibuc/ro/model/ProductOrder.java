@@ -17,10 +17,10 @@ public class ProductOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Long productOrderId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="productId")
+    @JoinColumn(name="product_id")
     private Product product;
 
     @NotNull
@@ -28,7 +28,7 @@ public class ProductOrder {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id")
+    @JoinColumn(name="order_id")
     private Order order;
 
 }
