@@ -1,8 +1,5 @@
 package com.unibuc.ro.model;
-
 import lombok.*;
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
