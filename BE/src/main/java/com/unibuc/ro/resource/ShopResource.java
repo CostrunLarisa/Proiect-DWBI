@@ -2,10 +2,10 @@ package com.unibuc.ro.resource;
 
 import com.unibuc.ro.model.Shop;
 import com.unibuc.ro.service.ShopService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,10 +1,10 @@
 package com.unibuc.ro.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
 
@@ -25,7 +25,7 @@ public class Order {
     @NotNull
     private Date datePlaced;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "id", nullable = false)
     private UserDetails user;
 
