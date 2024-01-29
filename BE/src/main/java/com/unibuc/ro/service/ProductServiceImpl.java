@@ -28,15 +28,11 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<Product> getAllProducts() {
-//        String username = userService.getUsername(token);
-        String username = "Bianca";
-        return productRepository.findAllByAddedByUser(username).stream().toList();
+        return productRepository.findAll().stream().toList();
     }
 
     @Override
     public List<Product> getAllProductsByShopId( Long shopId) {
-//        String username = userService.getUsername(token);
-        String username = "Bianca";
         Optional<Shop> shop = shopService.findById(shopId);
         if (shop.isPresent()){
             return productRepository.findAllByShop_ShopId(shopId).stream().toList();
@@ -48,15 +44,11 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product getProductById( Long id) {
-//        String username = userService.getUsername(token);
-        String username = "Bianca";
-        return productRepository.findByProductIdAndAddedByUser(id,username).orElseThrow(()->new RuntimeException("Product not found"));
+        return productRepository.findByProductId(id).orElseThrow(()->new RuntimeException("Product not found"));
     }
 
     @Override
     public Product addProduct(ProductDto productDto) {
-//        String addedByUser = userService.getUsername(token);
-        String addedByUser = "Bianca";
         Optional<Shop> shop = shopService.findById( productDto.getShopId());
         if (shop.isPresent()){
             Product newProduct = Product.builder()
@@ -65,11 +57,9 @@ public class ProductServiceImpl implements ProductService{
                     .inStock(productDto.isInStock())
                     .discount(productDto.getDiscount())
                     .description(productDto.getDescription())
-                    .addedByUser(addedByUser)
                     .shop(shop.get()).build();
             shop.get().getProductsList().add(newProduct);
             shopRepository.save(shop.get());
-//            shopService.addShop(token, shop.get());
             return productRepository.save(newProduct);
         }
         else {
@@ -79,8 +69,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product updateProductById( Long id, ProductDto productDto) {
-//        String username = userService.getUsername(token);
-        String username = "Bianca";
+
         Optional<Product> productToUpdate = productRepository.findById(id);
         if(productToUpdate.isPresent())
         {

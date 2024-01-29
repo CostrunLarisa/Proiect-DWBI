@@ -22,6 +22,4 @@ public class ProductDto {
 
     private Long shopId;
 
-    private String addedByUser;
-
 }

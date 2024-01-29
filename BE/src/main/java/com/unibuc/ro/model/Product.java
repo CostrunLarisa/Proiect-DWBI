@@ -32,8 +32,6 @@ public class Product {
 
     private boolean inStock;
 
-    private String addedByUser;
-
     @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "shop_id", nullable = false)
