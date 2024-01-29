@@ -9,7 +9,8 @@ import {AuthService} from "../authservice";
 })
 export class OrderComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router : Router) { }
+  constructor(private authService: AuthService,
+              private router : Router) { }
 
   ngOnInit(): void {
     if (!this.authService.isLoggedIn()) {
