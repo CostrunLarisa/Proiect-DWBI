@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ShopComponent } from './shop/shop.component';
 import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
+import { ErrorInterceptorComponent } from './error-interceptor/error-interceptor.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductComponent } from './product/product.component';
     SignupComponent,
     ShopComponent,
     OrderComponent,
-    ProductComponent
+    ProductComponent,
+    ErrorInterceptorComponent,
   ],
     imports: [
         BrowserModule,

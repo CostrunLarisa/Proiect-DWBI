@@ -54,9 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private AuthenticationSuccessHandler authenticationSuccessHandler() {
         return (request, response, authentication) -> {
+            String token = userService.generateToken(authentication.getName());
             response.setHeader("Access-Control-Allow-Origin", "*");
             response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization-Token");
             response.setHeader("Access-Control-Expose-Headers", "Authorization-Token");
+
+            response.addHeader("Authorization-Token", token);
+            response.setHeader("Authorization-Token", token);
         };
     }
 
