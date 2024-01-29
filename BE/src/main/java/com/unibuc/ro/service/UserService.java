@@ -6,4 +6,5 @@ public interface UserService extends org.springframework.security.core.userdetai
 
     void save(UserDetailsDTO userDetails);
 
+    String generateToken(String name);
 }
