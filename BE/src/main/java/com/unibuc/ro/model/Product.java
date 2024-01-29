@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import java.util.Set;
+
 @Entity
 @Table(name="product")
 @AllArgsConstructor
@@ -39,5 +41,7 @@ public class Product {
     @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
+    @OneToMany(mappedBy = "product")
+    private Set<ProductOrder> orderSet;
 
 }

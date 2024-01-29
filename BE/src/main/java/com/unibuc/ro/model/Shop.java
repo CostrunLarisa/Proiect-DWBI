@@ -7,6 +7,7 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,4 +30,7 @@ public class Shop {
     @JsonManagedReference
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "shop")
     private List<Product> productsList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop")
+    private Set<Order> orders;
 }
