@@ -3,6 +3,7 @@ package com.unibuc.ro.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.Set;
@@ -34,4 +35,6 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     Set<ProductOrder>  products;
+
+    private Double totalPrice;
 }
