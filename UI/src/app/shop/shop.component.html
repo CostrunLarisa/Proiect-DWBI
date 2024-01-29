@@ -1,1 +1,21 @@
 <app-navbar></app-navbar>
+<div class="items-container">
+  <div class="items-div">
+    <h2>OUR SHOPS</h2>
+    <ul>
+      <li *ngFor="let item of shops">
+        <div class="item-container">
+          <label>ID: {{ item.id }}</label>
+          <label>Shop name: {{ item.name }} </label>
+          <label>Shop name: {{ item.category }} </label>
+
+          <!--<input type="number" #newQuantityInput placeholder="{{item.quantity}}" />
+            -- TODO for each to update quantity
+          <button (click)="updateQuantity(item.id, newQuantityInput.value)">Change quantity</button>
+                    -->
+<!--          <button (click)="checkItem(item.id)">Check item</button>-->
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
