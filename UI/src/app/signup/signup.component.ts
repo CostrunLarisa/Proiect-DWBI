@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
     const apiUrl = 'http://localhost:8080/signup';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:8080'
+      'Access-Control-Allow-Origin': 'http://localhost:4200'
     });
 
     this.http.post(apiUrl, this.user, {headers: headers}).subscribe(
