@@ -15,16 +15,16 @@ import java.util.Set;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_seq")
-    @SequenceGenerator(name = "order_id_seq", sequenceName = "ID", allocationSize = 1)
-    @Column(name = "order_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "order_id_Sequence")
+    @SequenceGenerator(name = "order_id_Sequence", sequenceName = "ORDER_ID_SEQ", allocationSize = 1)
+    @Column(name = "order_id")
     private Long orderId;
 
     @NotNull
     private Date datePlaced;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private UserDetails user;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,4 +35,11 @@ public class Order {
     Set<ProductOrder>  products;
 
     private Double totalPrice;
+
+    @OneToMany(mappedBy = "order")
+    private Set<Review> reviews;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id", nullable = false)
+    private OrderAddress orderAddress;
 }
