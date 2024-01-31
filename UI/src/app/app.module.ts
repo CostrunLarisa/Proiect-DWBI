@@ -12,6 +12,8 @@ import { ShopComponent } from './shop/shop.component';
 import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
 import { ErrorInterceptorComponent } from './error-interceptor/error-interceptor.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ErrorInterceptorComponent } from './error-interceptor/error-interceptor
     OrderComponent,
     ProductComponent,
     ErrorInterceptorComponent,
+    OrderHistoryComponent,
+    CartComponent,
   ],
     imports: [
         BrowserModule,
