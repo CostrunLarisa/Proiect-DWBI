@@ -1,6 +1,7 @@
 package com.unibuc.ro.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.unibuc.ro.utils.Categorie;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,12 +25,12 @@ public class Shop {
 
     private String name;
 
-    private String username;
-
     @JsonManagedReference
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "shop")
     private List<Product> productsList = new ArrayList<>();
 
     @OneToMany(mappedBy = "shop")
     private Set<Order> orders;
+
+    private Categorie categorie;
 }

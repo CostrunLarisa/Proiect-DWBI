@@ -32,7 +32,7 @@ public class Product {
 
     private boolean inStock;
 
-    private String addedByUser;
+    private int stock;
 
     @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)

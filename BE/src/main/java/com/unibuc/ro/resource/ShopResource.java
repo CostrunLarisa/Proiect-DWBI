@@ -19,14 +19,13 @@ public class ShopResource {
         this.shopService = shopService;
     }
 
-
     @PostMapping("/add")
     public ResponseEntity<Shop> addShop(@RequestBody @Valid Shop shop){
         return ResponseEntity.ok(shopService.addShop(shop));
     }
 
     @GetMapping
-    public ResponseEntity<List<Shop>> getAll( String token){
+    public ResponseEntity<List<Shop>> getAll(){
         return ResponseEntity.ok(shopService.getAllShops());
     }
     @GetMapping("/{id}")
