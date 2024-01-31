@@ -15,8 +15,9 @@ import java.util.Set;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_seq")
+    @SequenceGenerator(name = "order_id_seq", sequenceName = "ID", allocationSize = 1)
+    @Column(name = "order_id", nullable = false)
     private Long orderId;
 
     @NotNull

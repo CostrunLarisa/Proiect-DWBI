@@ -16,8 +16,9 @@ import javax.validation.constraints.NotNull;
 public class ProductOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prodOrd_id_seq")
+    @SequenceGenerator(name = "prodOrd_id_seq", sequenceName = "ID", allocationSize = 1)
+    @Column(name = "id", nullable = false)
     private Long productOrderId;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -11,7 +11,7 @@ import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "shop")
 @Table(name = "shop")
 @Builder
 @Getter
@@ -19,8 +19,9 @@ import java.util.Set;
 public class Shop {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "shop_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shop_id_seq")
+    @SequenceGenerator(name = "shop_id_seq", sequenceName = "ID", allocationSize = 1)
+    @Column(name = "shop_id", nullable = false)
     private Long shopId;
 
     private String name;
