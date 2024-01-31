@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {AuthService} from "../authservice";
+import {Router} from "@angular/router";
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -10,11 +13,16 @@ export class ProductComponent implements OnInit {
 
   productsList: any[] = [];
 
-  constructor(  private http: HttpClient, private router: Router) { }
+  constructor(private authService: AuthService, private http: HttpClient, private router : Router) { }
 
   ngOnInit(): void {
-
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/error']);
+    }
+    else{
       this.getAllProducts();
+    }
+
   }
 
   getAllProducts(){

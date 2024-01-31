@@ -1,10 +1,10 @@
 package com.unibuc.ro.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="product")
@@ -32,12 +32,14 @@ public class Product {
 
     private boolean inStock;
 
-    private String addedByUser;
+    private int stock;
 
     @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
+    @OneToMany(mappedBy = "product")
+    private Set<ProductOrder> orderSet;
 
 }

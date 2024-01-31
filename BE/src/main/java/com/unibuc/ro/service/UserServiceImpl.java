@@ -1,8 +1,14 @@
 package com.unibuc.ro.service;
 
 import com.unibuc.ro.exception.InvalidUsernameException;
+import com.unibuc.ro.exception.TokenValidationException;
 import com.unibuc.ro.model.UserDetailsDTO;
 import com.unibuc.ro.repository.UserRepository;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.SecretKey;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -18,7 +26,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-
+    private final long TOKEN_VALABILITY = 86400000;
+    private final SecretKey KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     public UserServiceImpl(UserRepository userRepository,
                            BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
@@ -59,5 +68,30 @@ public class UserServiceImpl implements UserService {
                 .username(userDetails.getUsername())
                 .password(bCryptPasswordEncoder.encode(userDetails.getPassword()))
                 .build());
+    }
+
+    @Override
+    public String generateToken(String username) {
+        Date now = new Date();
+        Date expireDate = new Date(now.getTime() + TOKEN_VALABILITY);
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(now)
+                .setExpiration(expireDate)
+                .signWith(KEY)
+                .compact();
+    }
+    @Override
+    public String decryptToken(String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(KEY)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claims.getSubject();
+        } catch (Exception e) {
+            throw new TokenValidationException("Authentication token is invalid.");
+        }
     }
 }

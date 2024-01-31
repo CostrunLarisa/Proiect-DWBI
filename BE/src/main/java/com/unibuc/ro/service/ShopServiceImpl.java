@@ -18,24 +18,18 @@ public class ShopServiceImpl implements ShopService{
 
     @Override
     public List<Shop> getAllShops() {
-//        String username = userService.getUsername(token);
-        String username = "Bianca";
-        return shopRepository.findAllByUsername(username).stream().toList();
+        return shopRepository.findAll().stream().toList();
     }
 
     @Override
     public Shop addShop( Shop shop) {
-//        String username = userService.getUsername(token);
-        String username = "Bianca";
-        Shop newShop = Shop.builder().name(shop.getName()).username(username).build();
+        Shop newShop = Shop.builder().name(shop.getName()).build();
         return shopRepository.save(newShop);
     }
 
     @Override
     public Optional<Shop> findById( Long id) {
-//        String username = userService.getUsername(token);
-        String username = "Bianca";
-        return shopRepository.findByShopIdAndUsername(id,username);
+        return shopRepository.findByShopId(id);
     }
 
 

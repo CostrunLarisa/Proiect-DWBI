@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {ActivatedRoute, Route, Router} from "@angular/router";
+import {AuthService} from "../authservice";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,10 @@ export class LoginComponent implements OnInit {
   };
   errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient,
+              private router: Router,
+              private route: ActivatedRoute,
+              private authService: AuthService) {}
 
   ngOnInit(): void {
   }
@@ -33,6 +37,7 @@ export class LoginComponent implements OnInit {
 
         const responseHeaders: HttpHeaders = response.headers;
         console.log(response.headers);
+        this.authService.setAuthToken(responseHeaders.get('Authorization-Token'));
         setTimeout(() => {
           this.router.navigate(['/shop', {headers: responseHeaders}]);
           console.log('Login successful', response);

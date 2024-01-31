@@ -7,10 +7,12 @@ import {NewshopComponent} from "./newshop/newshop.component";
 import {ProductComponent} from "./product/product.component";
 import {NewproductComponent} from "./newproduct/newproduct.component";
 import {ShopsproductsComponent} from "./shopsproducts/shopsproducts.component";
+import {ErrorInterceptorComponent} from "./error-interceptor/error-interceptor.component";
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'signup', component:SignupComponent},
+  {path: 'error', component: ErrorInterceptorComponent},
   {path: 'shops', component:ShopComponent},
   {path: 'newshop', component:NewshopComponent},
   {path: 'products', component:ProductComponent},

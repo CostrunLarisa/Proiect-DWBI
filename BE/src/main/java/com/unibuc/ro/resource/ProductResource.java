@@ -3,11 +3,11 @@ package com.unibuc.ro.resource;
 import com.unibuc.ro.model.Product;
 import com.unibuc.ro.model.ProductDto;
 import com.unibuc.ro.service.ProductService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController

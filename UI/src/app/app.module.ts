@@ -14,6 +14,7 @@ import { ProductComponent } from './product/product.component';
 import { NewproductComponent } from './newproduct/newproduct.component';
 import { NewshopComponent } from './newshop/newshop.component';
 import { ShopsproductsComponent } from './shopsproducts/shopsproducts.component';
+import { ErrorInterceptorComponent } from './error-interceptor/error-interceptor.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { ShopsproductsComponent } from './shopsproducts/shopsproducts.component'
     SignupComponent,
     ShopComponent,
     OrderComponent,
+    ProductComponent,
+    ErrorInterceptorComponent,
     ProductComponent,
     NewproductComponent,
     NewshopComponent,

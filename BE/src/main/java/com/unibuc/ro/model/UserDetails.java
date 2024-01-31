@@ -1,10 +1,11 @@
 package com.unibuc.ro.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
+import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity(name = "user_details")
 @Table(name = "user_details")
@@ -15,7 +16,8 @@ import java.util.Collection;
 @Builder
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+    @SequenceGenerator(name = "user_id_seq", sequenceName = "ID", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Long id;
     private String username;
@@ -48,4 +50,7 @@ public class UserDetails implements org.springframework.security.core.userdetail
     public boolean isEnabled() {
         return true;
     }
+
+    @OneToMany(mappedBy = "user")
+    private Set<Order> orders;
 }
