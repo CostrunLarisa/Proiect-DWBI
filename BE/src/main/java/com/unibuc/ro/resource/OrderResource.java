@@ -41,7 +41,9 @@ public class OrderResource {
     @GetMapping("/new")
     public ResponseEntity<Order> newOrder(@RequestHeader(value = "Authorization-Token", required = true) String token, OrderDto orderDto) {
         String username = userService.decryptToken(token);
-        Order order = orderService.newOrder()
+//        Order order = orderService.newOrder()
+
+        return null;
     }
 
 }

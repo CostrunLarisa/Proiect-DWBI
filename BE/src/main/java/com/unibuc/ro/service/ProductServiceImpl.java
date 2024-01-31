@@ -100,7 +100,7 @@ public class ProductServiceImpl implements ProductService{
             }
             else {
                 if(finalQuantity==0){
-                    p1.setInStock(false);
+                    p1.setInStock('0');
                     p1.setStock(0);
                     return productRepository.save(p1);
                 }
