@@ -22,4 +22,6 @@ public class ProductDto {
 
     private Long shopId;
 
+    private int stock;
+
 }

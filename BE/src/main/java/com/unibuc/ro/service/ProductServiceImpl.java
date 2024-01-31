@@ -57,6 +57,7 @@ public class ProductServiceImpl implements ProductService{
                     .inStock(productDto.isInStock())
                     .discount(productDto.getDiscount())
                     .description(productDto.getDescription())
+                    .stock(productDto.getStock())
                     .shop(shop.get()).build();
             shop.get().getProductsList().add(newProduct);
             shopRepository.save(shop.get());
@@ -87,4 +88,31 @@ public class ProductServiceImpl implements ProductService{
             throw new RuntimeException("Product not found");
         }
     }
+
+    public Product updateStock(Long id, int quantity){
+        Optional<Product> productToUpdate = productRepository.findById(id);
+        if(productToUpdate.isPresent()) {
+            Product p1= productToUpdate.get();
+            int finalQuantity = p1.getStock() - quantity;
+            if(finalQuantity > 0 ){
+                p1.setStock(finalQuantity);
+                return productRepository.save(p1);
+            }
+            else {
+                if(finalQuantity==0){
+                    p1.setInStock(false);
+                    p1.setStock(0);
+                    return productRepository.save(p1);
+                }
+                else {
+                    throw new RuntimeException("Not enough stock for this product");
+                }
+            }
+        }
+        else {
+            throw new RuntimeException("Product not found");
+        }
+
+    }
+
 }
