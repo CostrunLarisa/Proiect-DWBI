@@ -18,7 +18,7 @@ public class ProductDto {
 
     private Float discount;
 
-    private boolean inStock;
+    private char inStock;
 
     private Long shopId;
 

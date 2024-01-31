@@ -6,7 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name = "product")
 @Table(name="product")
 @AllArgsConstructor
 @Builder
@@ -16,8 +16,9 @@ import java.util.Set;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_seq")
+    @SequenceGenerator(name = "product_id_seq", sequenceName = "ID", allocationSize = 1)
+    @Column(name = "id", nullable = false)
     private Long productId;
 
     @NonNull
@@ -30,7 +31,7 @@ public class Product {
 
     private Float discount;
 
-    private boolean inStock;
+    private char inStock;
 
     private int stock;
 

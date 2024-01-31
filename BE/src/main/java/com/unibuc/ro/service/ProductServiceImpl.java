@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService{
             Product newProduct = Product.builder()
                     .name(productDto.getName())
                     .price(productDto.getPrice())
-                    .inStock(productDto.isInStock())
+                    .inStock(productDto.getInStock())
                     .discount(productDto.getDiscount())
                     .description(productDto.getDescription())
                     .stock(productDto.getStock())
@@ -77,7 +77,7 @@ public class ProductServiceImpl implements ProductService{
             productToUpdate.get().setName(productDto.getName());
             productToUpdate.get().setPrice(productDto.getPrice());
             productToUpdate.get().setDiscount(productDto.getDiscount());
-            productToUpdate.get().setInStock(productDto.isInStock());
+            productToUpdate.get().setInStock(productDto.getInStock());
             Optional<Shop> shop = shopService.findById( productDto.getShopId());
             if (shop.isPresent()){
                 productToUpdate.get().setShop(shop.get());
@@ -100,7 +100,7 @@ public class ProductServiceImpl implements ProductService{
             }
             else {
                 if(finalQuantity==0){
-                    p1.setInStock(false);
+                    p1.setInStock('0');
                     p1.setStock(0);
                     return productRepository.save(p1);
                 }

@@ -31,7 +31,7 @@ export class ShopComponent implements OnInit {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:8080'
     });
-    this.http.get<any[]>('http://localhost:8080/shops', {headers }).subscribe(
+    this.http.get<any[]>('http://localhost:8080/shops', {headers}).subscribe(
       (response: any) => {
         this.shops = response;
       },
