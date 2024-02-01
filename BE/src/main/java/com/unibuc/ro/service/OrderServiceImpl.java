@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<Order> findAllOrdersForUser(String username) {
-        return orderRepository.findAllByUserUsername(username);
+        return orderRepository.findAllByUser(username);
     }
 
     @Override
