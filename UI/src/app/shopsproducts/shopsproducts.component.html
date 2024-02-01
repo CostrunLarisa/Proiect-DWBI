@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
 <div class="products-container">
   <div class="products-div">
-    <h2>Products </h2>
+    <h2>Products from shop {{shopId}}</h2>
     <ul>
-      <li *ngFor="let product of productsList">
+      <li *ngFor="let product of shopProductsList">
         <div class="products-container">
           <label>ID: {{ product.productId }}</label>
           <label>Name: {{ product.name }} </label>
@@ -13,14 +13,10 @@
           <label>Description: {{ product.description }} </label>
           <label>In Stock: {{ product.inStock }} </label>
 
-          <!--            <label>ShopId: {{ product.shopId }} </label>-->
 
         </div>
       </li>
     </ul>
-    <button (click)="goToAddProduct()">Add Product</button>
-    <button (click)="goToShopsList()">View Shops</button>
-
+    <button (click)="goToShops()">View shops</button>
   </div>
-
 </div>

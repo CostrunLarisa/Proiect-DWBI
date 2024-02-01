@@ -11,6 +11,9 @@ import { SignupComponent } from './signup/signup.component';
 import { ShopComponent } from './shop/shop.component';
 import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
+import { NewproductComponent } from './newproduct/newproduct.component';
+import { NewshopComponent } from './newshop/newshop.component';
+import { ShopsproductsComponent } from './shopsproducts/shopsproducts.component';
 import { ErrorInterceptorComponent } from './error-interceptor/error-interceptor.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { CartComponent } from './cart/cart.component';
@@ -27,6 +30,10 @@ import { CartComponent } from './cart/cart.component';
     ErrorInterceptorComponent,
     OrderHistoryComponent,
     CartComponent,
+    ProductComponent,
+    NewproductComponent,
+    NewshopComponent,
+    ShopsproductsComponent
   ],
     imports: [
         BrowserModule,

@@ -6,6 +6,8 @@ public enum Categorie {
     APROZAR,
     PIATA,
     COFETARIE,
-    MALL
+    MALL,
+    RESTAURANT,
+    FASTFOOD
 
 }

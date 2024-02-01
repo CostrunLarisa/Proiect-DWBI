@@ -5,9 +5,11 @@
     <ul>
       <li *ngFor="let item of shops">
         <div class="item-container">
-          <label>ID: {{ item.id }}</label>
+          <label>ID: {{ item.shopId }}</label>
           <label>Shop name: {{ item.name }} </label>
-          <label>Shop name: {{ item.category }} </label>
+          <label>Shop name: {{ item.categorie }} </label>
+
+          <button (click)="goToShopProducts(item.shopId)">View products</button>
 
           <!--<input type="number" #newQuantityInput placeholder="{{item.quantity}}" />
             -- TODO for each to update quantity

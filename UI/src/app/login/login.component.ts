@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         console.log(response.headers);
         this.authService.setAuthToken(responseHeaders.get('Authorization-Token'));
         setTimeout(() => {
-          this.router.navigate(['/shop', {headers: responseHeaders}]);
+          this.router.navigate(['/shops', {headers: responseHeaders}]);
           console.log('Login successful', response);
         }, 3000);
       },

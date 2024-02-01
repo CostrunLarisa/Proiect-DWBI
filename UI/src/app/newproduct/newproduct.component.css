@@ -1,10 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-.shops-container {
+.newproduct-container-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,36 +6,25 @@ body {
   background-color: #fafafa;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.shops-div {
+.newproduct-form {
   background-color: #fff;
-  padding: 50px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
+  max-width: 400px;
+  width: 100%;
   margin: 0 auto;
 }
-
-.shops-container {
-  padding: 30px;
-  margin: 0 auto;
-  border: 1px solid #dbdbdb;
-  border-radius: 10px;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
 
 h2 {
   color: #262626;
   font-size: 24px;
   margin-bottom: 20px;
-  padding-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
 }
 
 label {
@@ -51,9 +34,24 @@ label {
   margin-bottom: 8px;
 }
 
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
 button {
-  margin-top: 10px;
-  margin-right: 5px;
   background-color: #3897f0;
   color: #fff;
   padding: 12px;
@@ -66,4 +64,19 @@ button {
 
 button:hover {
   background-color: #26688e;
+}
+
+.signup-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+a {
+  color: #3897f0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
 }

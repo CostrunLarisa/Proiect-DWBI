@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   goToShops() {
-    this.router.navigate(['/shop']);
+    this.router.navigate(['/shops']);
   }
 
   goToCart() {
