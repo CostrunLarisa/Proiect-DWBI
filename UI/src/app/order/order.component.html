@@ -1,1 +1,23 @@
 <app-navbar></app-navbar>
+<div class="lists-container">
+  <div class="lists-div">
+    <h2>My orders history</h2>
+    <ul>
+      <li *ngFor="let order of orders">
+        <div class="list-container">
+          <label>Date: {{ order.datePlaced }}</label>
+          <label>Shop: {{ order.shop.name }} </label>
+          <ul>
+            <li *ngFor="let product of order.products">
+              <div class = "list-container">
+                <label></label>
+              </div>
+            </li>
+          </ul>
+          <label>Total price: {{ order.totalPrice }}</label>
+          <button (click)="getOrders()">See statistics regarding my spending</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

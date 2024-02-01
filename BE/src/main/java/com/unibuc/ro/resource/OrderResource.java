@@ -6,10 +6,7 @@ import com.unibuc.ro.service.OrderService;
 import com.unibuc.ro.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +24,8 @@ public class OrderResource {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Order>> getAllOrdersForUser(@RequestHeader(value = "Authorization-Token", required = true) String token, Date date) {
+    public ResponseEntity<List<Order>> getAllOrdersForUser(@RequestHeader(value = "Authorization-Token", required = true) String token,
+                                                           @RequestParam  Date date) {
         String username = userService.decryptToken(token);
         List<Order> orders;
         if (date != null) {
@@ -38,8 +36,9 @@ public class OrderResource {
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
-    @GetMapping("/new")
-    public ResponseEntity<Order> newOrder(@RequestHeader(value = "Authorization-Token", required = true) String token, OrderDto orderDto) {
+    @PostMapping("/new")
+    public ResponseEntity<Order> newOrder(@RequestHeader(value = "Authorization-Token", required = true) String token,
+                                          OrderDto orderDto) {
         String username = userService.decryptToken(token);
 //        Order order = orderService.newOrder()
 
