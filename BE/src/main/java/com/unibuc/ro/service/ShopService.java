@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ShopService {
-    List<Shop> getAllShops(String token);
+    List<Shop> getAllShops();
 
     Shop addShop( Shop shop);
 

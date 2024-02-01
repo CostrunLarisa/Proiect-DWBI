@@ -2,10 +2,12 @@ package com.unibuc.ro.resource;
 
 import com.unibuc.ro.model.Shop;
 import com.unibuc.ro.service.ShopService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,11 +27,11 @@ public class ShopResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Shop>> getAll(@RequestHeader(value = "Authorization-Token", required = true) String token){
-        return ResponseEntity.ok(shopService.getAllShops(token));
+    public ResponseEntity<List<Shop>> getAll(){
+        return ResponseEntity.ok(shopService.getAllShops());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Shop>> getShopById(@RequestHeader(value = "Authorization-Token", required = true) String token,@PathVariable("id") Long id){
+    public ResponseEntity<Optional<Shop>> getShopById(@RequestHeader(value = "Authorization-Token", required = true) String token, @PathVariable("id") Long id){
         return ResponseEntity.ok(shopService.findById(id));
     }
 

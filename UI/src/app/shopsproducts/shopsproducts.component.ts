@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {AuthService} from "../authservice";
 
 
 @Component({
@@ -12,9 +13,15 @@ export class ShopsproductsComponent implements OnInit {
 
   shopProductsList: any[] = [];
   shopId: any;
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
+  constructor(private authService: AuthService,
+              private route: ActivatedRoute,
+              private http: HttpClient,
+              private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/error']);
+    }
     this.route.params.subscribe(params => {
       this.shopId=params['shopId'];
       this.getAllProductsFromShop(this.shopId);
@@ -23,11 +30,12 @@ export class ShopsproductsComponent implements OnInit {
 
   getAllProductsFromShop(shopId: any){
     const headers = new HttpHeaders({
+      // @ts-ignore
+      'Authorization-Token': this.authService.getAuthToken(),
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:8081'
+      'Access-Control-Allow-Origin': 'http://localhost:8080'
     });
-    // const params = new HttpParams().set('shopId',shopId)
-    this.http.get<any[]>(`http://localhost:8081/products/shop/${shopId}`, {  headers }).subscribe(
+    this.http.get<any[]>(`http://localhost:8080/products/shop/${shopId}`, {  headers }).subscribe(
       (data) => {
         this.shopProductsList = data;
       },

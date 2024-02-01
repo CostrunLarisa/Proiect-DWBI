@@ -33,5 +33,5 @@ public class Shop {
     @OneToMany(mappedBy = "shop")
     private Set<Order> orders;
 
-    private Categorie categorie;
+//    private Categorie categorie;
 }
