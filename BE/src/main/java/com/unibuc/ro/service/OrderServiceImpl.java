@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<Order> findAllOrdersForUserByDate(String username, Date date) {
-        return orderRepository.findAllByUserUsernameAndDatePlaced(username, date);
+        return orderRepository.findAllByUserAndDatePlaced(username, date);
     }
 
     @Override

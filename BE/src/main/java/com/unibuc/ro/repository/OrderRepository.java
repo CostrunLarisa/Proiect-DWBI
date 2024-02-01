@@ -15,6 +15,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("select o from Order o where o.user.username=?1")
     List<Order> findAllByUser(String username);
-    List<Order> findAllByUserUsernameAndDatePlaced(String username, Date date);
+
+    @Query("select o from Order o where o.user.username=?1 and o.datePlaced=?2")
+    List<Order> findAllByUserAndDatePlaced(String username, Date date);
     Set<Order> findAllByOrderAddress(OrderAddress address);
 }
