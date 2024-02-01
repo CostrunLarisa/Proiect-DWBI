@@ -21,7 +21,7 @@ export class OrderComponent implements OnInit {
     this.getOrders();
   }
 
-  private getOrders() {
+  public getOrders() {
     const headers = new HttpHeaders({
       // @ts-ignore
       'Authorization-Token': this.authService.getAuthToken(),

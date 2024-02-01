@@ -10,6 +10,7 @@ import {ShopsproductsComponent} from "./shopsproducts/shopsproducts.component";
 import {ErrorInterceptorComponent} from "./error-interceptor/error-interceptor.component";
 import {OrderHistoryComponent} from "./order-history/order-history.component";
 import {CartComponent} from "./cart/cart.component";
+import {OrderComponent} from "./order/order.component";
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path:'productsFromShop/:shopId', component: ShopsproductsComponent},
   {path: 'orders/history', component:OrderHistoryComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'error', component: ErrorInterceptorComponent}
+  {path: 'error', component: ErrorInterceptorComponent},
+  {path: 'orders', component: OrderComponent}
 ]
 
 @NgModule({

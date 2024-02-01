@@ -41,6 +41,12 @@ export class ShopComponent implements OnInit {
     );
   }
   goToShopProducts(shopId: any) {
-    this.router.navigate(['/productsFromShop', shopId]);
+    const headers = new HttpHeaders({
+      // @ts-ignore
+      'Authorization-Token': this.authService.getAuthToken(),
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:8080'
+    })
+    this.router.navigate(['/productsFromShop', shopId, {headers}]);
   }
 }

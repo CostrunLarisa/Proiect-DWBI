@@ -33,14 +33,19 @@ export class ShopsproductsComponent implements OnInit {
       // @ts-ignore
       'Authorization-Token': this.authService.getAuthToken(),
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:8080'
+      'Access-Control-Allow-Origin': 'http://localhost:4200'
     });
     this.http.get<any[]>(`http://localhost:8080/products/shop/${shopId}`, {  headers }).subscribe(
+
       (data) => {
         this.shopProductsList = data;
+        console.log(this.shopProductsList)
+        console.log(this.authService.getAuthToken())
       },
       (error) => {
         console.error('Error fetching data:', error);
+        console.log(this.shopProductsList)
+        console.log(this.authService.getAuthToken())
       }
     );
   }
