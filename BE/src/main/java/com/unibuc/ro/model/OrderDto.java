@@ -16,4 +16,5 @@ import java.util.Set;
 public class OrderDto implements Serializable {
     private Set<ProductOrderDto> products;
     private Long shopId;
+    private Long addressId;
 }

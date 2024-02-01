@@ -2,6 +2,7 @@ package com.unibuc.ro.resource;
 
 import com.unibuc.ro.model.Order;
 import com.unibuc.ro.model.OrderDto;
+import com.unibuc.ro.model.ProductOrderDto;
 import com.unibuc.ro.service.OrderService;
 import com.unibuc.ro.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -39,11 +40,26 @@ public class OrderResource {
     }
 
     @GetMapping("/new")
-    public ResponseEntity<Order> newOrder(@RequestHeader(value = "Authorization-Token", required = true) String token, OrderDto orderDto) {
+    public ResponseEntity<Order> newOrder(@RequestHeader(value = "Authorization-Token", required = true) String token, OrderDto orderDto, List<ProductOrderDto> productsDto) {
         String username = userService.decryptToken(token);
-//        Order order = orderService.newOrder()
+        Order order = orderService.newOrder(username, orderDto, productsDto);
 
-        return null;
+        try {
+            return new ResponseEntity<>(order, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public ResponseEntity<Order> addReview(@RequestHeader(value = "Authorization-Token", required = true) String token, Long orderId, String review) {
+        String username = userService.decryptToken(token);
+
+        try {
+            orderService.addReview(username, orderId, review);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
