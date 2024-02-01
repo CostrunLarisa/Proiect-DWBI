@@ -12,7 +12,7 @@ import java.util.Set;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("SELECT p FROM product p JOIN shop s ON p.shop.shopId = s.shopId")
+    @Query("SELECT p FROM product p JOIN shop s ON p.shop.shopId = s.shopId where p.shop.shopId = ?1")
     List<Product> findAllByShop_ShopId(Long shopId);
     List<Product> findAll();
     Optional<Product> findByProductId(Long id);
