@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   }
 
   goToHistory() {
-    this.router.navigate(['/orders/history']);
+    this.router.navigate(['/orders']);
   }
 
   goToShops() {
