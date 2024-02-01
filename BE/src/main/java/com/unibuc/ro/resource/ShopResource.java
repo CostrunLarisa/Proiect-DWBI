@@ -25,11 +25,11 @@ public class ShopResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Shop>> getAll(){
-        return ResponseEntity.ok(shopService.getAllShops());
+    public ResponseEntity<List<Shop>> getAll(@RequestHeader(value = "Authorization-Token", required = true) String token){
+        return ResponseEntity.ok(shopService.getAllShops(token));
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Shop>> getShopById(@PathVariable("id") Long id){
+    public ResponseEntity<Optional<Shop>> getShopById(@RequestHeader(value = "Authorization-Token", required = true) String token,@PathVariable("id") Long id){
         return ResponseEntity.ok(shopService.findById(id));
     }
 

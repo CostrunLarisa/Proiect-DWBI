@@ -17,7 +17,7 @@ public class ShopServiceImpl implements ShopService{
     }
 
     @Override
-    public List<Shop> getAllShops() {
+    public List<Shop> getAllShops(String token) {
         return shopRepository.findAll().stream().toList();
     }
 
