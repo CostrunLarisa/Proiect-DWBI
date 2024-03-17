@@ -1,6 +1,7 @@
 package com.unibuc.ro.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -40,7 +41,8 @@ public class Product {
     @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
-    @OneToMany(mappedBy = "product")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "product")
     private Set<ProductOrder> orderSet;
 
 }

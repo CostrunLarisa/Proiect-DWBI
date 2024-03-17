@@ -1,5 +1,6 @@
 package com.unibuc.ro.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -51,9 +52,11 @@ public class UserDetails implements org.springframework.security.core.userdetail
         return true;
     }
 
-    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "user")
     private Set<Order> orders;
 
-    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "user")
     private Set<OrderAddress> orderAddresses;
 }

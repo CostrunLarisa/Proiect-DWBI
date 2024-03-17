@@ -27,7 +27,7 @@ public class ShopResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Shop>> getAll(){
+    public ResponseEntity<List<Shop>> getAll(@RequestHeader(value = "Authorization-Token", required = true)String token){
         return ResponseEntity.ok(shopService.getAllShops());
     }
     @GetMapping("/{id}")

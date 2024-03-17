@@ -1,6 +1,8 @@
 package com.unibuc.ro.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,9 +32,11 @@ public class OrderAddress {
     private Integer floorNumber;
     private Integer flatNumber;
 
-    @OneToMany(mappedBy = "orderAddress")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "orderAddress")
     private Set<Order> orders;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserDetails user;

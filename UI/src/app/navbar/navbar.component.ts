@@ -22,6 +22,9 @@ export class NavbarComponent implements OnInit {
   goToShops() {
     this.router.navigate(['/shops']);
   }
+  goToProducts() {
+    this.router.navigate(['/products']);
+  }
 
   goToCart() {
     this.router.navigate(['/cart']);

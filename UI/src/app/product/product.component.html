@@ -5,15 +5,20 @@
     <ul>
       <li *ngFor="let product of productsList">
         <div class="products-container">
-          <label>ID: {{ product.productId }}</label>
+          <label>ID: {{ product.productId }}</label><br>
           <label>Name: {{ product.name }} </label>
+          <br>
           <label>Price: {{ product.price }} </label>
+          <br>
           <label>Discount: {{ product.discount }} </label>
+          <br>
 
           <label>Description: {{ product.description }} </label>
+          <br>
           <label>In Stock: {{ product.inStock }} </label>
+          <br>
 
-          <!--            <label>ShopId: {{ product.shopId }} </label>-->
+                      <label>ShopId: {{ product.shopId }} </label>
 
         </div>
       </li>

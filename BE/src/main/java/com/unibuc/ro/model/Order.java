@@ -1,4 +1,6 @@
 package com.unibuc.ro.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,23 +25,28 @@ public class Order {
     @NotNull
     private Date datePlaced;
 
+    @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private UserDetails user;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="shop_id", nullable = false)
     private Shop shop;
 
-    @OneToMany(mappedBy = "order")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "order")
     Set<ProductOrder>  products;
 
     private Double totalPrice;
 
-    @OneToMany(mappedBy = "order")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "order")
     private Set<Review> reviews;
 
-    @ManyToOne
+    @JsonBackReference
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "address_id", nullable = false)
     private OrderAddress orderAddress;
 }

@@ -1,6 +1,7 @@
 package com.unibuc.ro.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class ProductOrder {
     @Column(name = "id", nullable = false)
     private Long productOrderId;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id")
     private Product product;
@@ -28,6 +30,7 @@ public class ProductOrder {
     @NotNull
     private Integer quantity;
 
+    @JsonBackReference
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="order_id")

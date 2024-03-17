@@ -23,9 +23,10 @@ export class NewproductComponent implements OnInit {
   }
   getAllShops(){
 
-    // @ts-ignore
-    const headers = new HttpHeaders({
 
+    const headers = new HttpHeaders({
+      // @ts-ignore
+      'Authorization-Token': this.authService.getAuthToken(),
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:8080'
     });

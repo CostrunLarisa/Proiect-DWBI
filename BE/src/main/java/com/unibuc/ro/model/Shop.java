@@ -30,8 +30,9 @@ public class Shop {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "shop")
     private List<Product> productsList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "shop")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "shop")
     private Set<Order> orders;
 
-//    private Categorie categorie;
+    private Categorie categorie;
 }

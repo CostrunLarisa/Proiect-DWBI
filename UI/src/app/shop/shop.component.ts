@@ -41,6 +41,6 @@ export class ShopComponent implements OnInit {
     );
   }
   goToShopProducts(shopId: any) {
-    this.router.navigate(['/productsFromShop', shopId]);
+    this.router.navigate(['/productsFromShop/', shopId]);
   }
 }

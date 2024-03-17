@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AuthService} from "../authservice";
 
@@ -25,8 +25,9 @@ export class ProductComponent implements OnInit {
   }
 
   getAllProducts(){
-    // @ts-ignore
     const headers = new HttpHeaders({
+      // @ts-ignore
+      'Authorization-Token': this.authService.getAuthToken(),
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:8080'
     });
@@ -41,7 +42,7 @@ export class ProductComponent implements OnInit {
   }
 
   goToAddProduct() {
-    this.router.navigate(['/newProduct']);
+    this.router.navigate(['/newproduct']);
   }
 
   goToShopsList(){

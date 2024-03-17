@@ -34,7 +34,7 @@ public class ProductResource {
     }
 
     @GetMapping("/shop/{shopId}")
-    public ResponseEntity<List<Product>> getAllProductsByShopId(@PathVariable("shopId") Long shopId){
+    public ResponseEntity<List<Product>> getAllProductsByShopId(@RequestHeader(value = "Authorization-Token", required = true)String token,@PathVariable("shopId") Long shopId){
         return ResponseEntity.ok(productService.getAllProductsByShopId( shopId));
     }
 
